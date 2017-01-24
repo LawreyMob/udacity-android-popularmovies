@@ -1,8 +1,10 @@
 package com.example.android.popularmovies;
 
 import android.media.Image;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,5 +34,19 @@ public class DetailActivity extends AppCompatActivity {
         movieVotesTextView.setText(String.valueOf(selectedMovie.getmVoteAverage()));
         movieOverviewTextView.setText(selectedMovie.getmOverview());
 
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
